@@ -1,8 +1,8 @@
-import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion'
+import { motion, useScroll, useSpring } from 'framer-motion'
 import { Briefcase } from 'lucide-react'
 import { useRef } from 'react'
 import type { Experience } from '../../data/cv'
-import { useMediaQuery } from '../../hooks/useMediaQuery'
+import { REDUCED_MOTION_QUERY, useMediaQuery } from '../../hooks/useMediaQuery'
 
 interface TimelineProps {
   items: Experience[]
@@ -16,7 +16,7 @@ interface TimelineProps {
  */
 export function Timeline({ items }: TimelineProps) {
   const ref = useRef<HTMLDivElement>(null)
-  const reduceMotion = useReducedMotion()
+  const reduceMotion = useMediaQuery(REDUCED_MOTION_QUERY)
   // Sur mobile, les cartes glissent verticalement (un décalage horizontal ferait déborder la page)
   const isDesktop = useMediaQuery('(min-width: 768px)')
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 75%', 'end 60%'] })

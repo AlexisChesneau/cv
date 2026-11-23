@@ -1,6 +1,6 @@
-import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { FINE_POINTER_QUERY, useMediaQuery } from '../../hooks/useMediaQuery'
+import { FINE_POINTER_QUERY, REDUCED_MOTION_QUERY, useMediaQuery } from '../../hooks/useMediaQuery'
 
 /** Éléments sur lesquels l'anneau s'agrandit. */
 const INTERACTIVE = 'a, button, [role="button"], input, textarea, select, label'
@@ -11,7 +11,7 @@ const INTERACTIVE = 'a, button, [role="button"], input, textarea, select, label'
  */
 export function CustomCursor() {
   const finePointer = useMediaQuery(FINE_POINTER_QUERY)
-  const reduceMotion = useReducedMotion()
+  const reduceMotion = useMediaQuery(REDUCED_MOTION_QUERY)
   const enabled = finePointer && !reduceMotion
 
   const x = useMotionValue(-100)

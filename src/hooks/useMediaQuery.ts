@@ -19,3 +19,9 @@ export function useMediaQuery(query: string): boolean {
 /** Raccourcis utilisés dans le site. */
 export const MOBILE_QUERY = '(max-width: 767px)'
 export const FINE_POINTER_QUERY = '(hover: hover) and (pointer: fine)'
+/**
+ * Préférence « réduire les animations ». À utiliser à la place de useReducedMotion
+ * de Framer Motion : vaut `false` pendant l'hydratation (comme le HTML pré-généré)
+ * puis la vraie valeur juste après, ce qui évite les erreurs d'hydratation.
+ */
+export const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)'

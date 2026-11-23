@@ -1,4 +1,4 @@
-import { MotionConfig, useReducedMotion } from 'framer-motion'
+import { MotionConfig } from 'framer-motion'
 import { lazy, Suspense, useEffect, useState } from 'react'
 import { CustomCursor } from './components/layout/CustomCursor'
 import { Footer } from './components/layout/Footer'
@@ -12,6 +12,7 @@ import { Hero } from './components/sections/Hero'
 import { Interests } from './components/sections/Interests'
 import { Skills } from './components/sections/Skills'
 import { Stats } from './components/sections/Stats'
+import { REDUCED_MOTION_QUERY, useMediaQuery } from './hooks/useMediaQuery'
 
 // Les particules (~100 Ko) sont chargées à part pour ne pas ralentir le premier affichage
 const ParticlesBackground = lazy(() => import('./components/layout/ParticlesBackground'))
@@ -32,7 +33,7 @@ function useIdleReady(enabled: boolean) {
 }
 
 export default function App() {
-  const reduceMotion = useReducedMotion()
+  const reduceMotion = useMediaQuery(REDUCED_MOTION_QUERY)
   const showParticles = useIdleReady(!reduceMotion)
 
   return (

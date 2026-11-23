@@ -1,6 +1,6 @@
-import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { useRef, type MouseEvent, type ReactNode } from 'react'
-import { FINE_POINTER_QUERY, useMediaQuery } from '../../hooks/useMediaQuery'
+import { FINE_POINTER_QUERY, REDUCED_MOTION_QUERY, useMediaQuery } from '../../hooks/useMediaQuery'
 
 interface TiltCardProps {
   children: ReactNode
@@ -15,7 +15,7 @@ interface TiltCardProps {
  */
 export function TiltCard({ children, className = '', maxTilt = 8 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null)
-  const reduceMotion = useReducedMotion()
+  const reduceMotion = useMediaQuery(REDUCED_MOTION_QUERY)
   const finePointer = useMediaQuery(FINE_POINTER_QUERY)
   const interactive = finePointer && !reduceMotion
 

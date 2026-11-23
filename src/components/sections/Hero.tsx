@@ -1,10 +1,12 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ChevronDown, Download, Mail } from 'lucide-react'
-import { profile, terminal } from '../../data/cv'
+import { contact, profile, terminal } from '../../data/cv'
 import { useRotatingText, useTypewriter } from '../../hooks/useTypewriter'
 import { ButtonLink } from '../ui/Button'
 import { GlitchText } from '../ui/GlitchText'
+import { LinkedinIcon } from '../ui/Icon'
 import { Terminal } from '../ui/Terminal'
+import { REDUCED_MOTION_QUERY, useMediaQuery } from '../../hooks/useMediaQuery'
 
 /** Curseur clignotant de la machine à écrire. */
 function TypeCursor({ className = '' }: { className?: string }) {
@@ -17,14 +19,14 @@ const item = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
 }
-/** Variante sans fondu pour le texte principal : visible immédiatement (meilleur LCP). */
+/** Variante sans fondu (badge, texte principal, boutons) : visible dès le HTML pré-généré, avant le JavaScript. */
 const itemNoFade = {
   hidden: { y: 12 },
   visible: { y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
 }
 
 export function Hero() {
-  const reduceMotion = useReducedMotion() ?? false
+  const reduceMotion = useMediaQuery(REDUCED_MOTION_QUERY)
   const fullName = `${profile.firstName} ${profile.lastName}`
 
   // Nom écrit lettre par lettre, puis rôles qui défilent en boucle
@@ -46,7 +48,7 @@ export function Hero() {
         <motion.div variants={container} initial="hidden" animate="visible">
           {/* Badge de disponibilité */}
           <motion.p
-            variants={item}
+            variants={itemNoFade}
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-surface/60 px-4 py-2 font-mono text-xs text-accent-light backdrop-blur"
           >
             <span aria-hidden="true" className="relative flex size-2">
@@ -89,7 +91,7 @@ export function Hero() {
           </motion.p>
 
           {/* Boutons d'action */}
-          <motion.div variants={item} className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <motion.div variants={itemNoFade} className="mt-8 flex flex-col gap-4 sm:flex-row">
             <ButtonLink
               href={`${import.meta.env.BASE_URL}${profile.cvFile}`}
               download
@@ -100,6 +102,20 @@ export function Hero() {
             <ButtonLink href="#contact" variant="secondary" icon={<Mail className="size-5" aria-hidden="true" />}>
               Me contacter
             </ButtonLink>
+            {contact.linkedin && (
+              <ButtonLink
+                href={contact.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="secondary"
+                title="Mon profil LinkedIn"
+                className="sm:w-12 sm:px-0"
+                icon={<LinkedinIcon className="size-5" />}
+              >
+                <span className="sm:sr-only">LinkedIn</span>
+                <span className="sr-only"> (s'ouvre dans un nouvel onglet)</span>
+              </ButtonLink>
+            )}
           </motion.div>
         </motion.div>
 

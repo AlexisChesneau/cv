@@ -103,10 +103,10 @@ export const profile = {
   /** Identifiant affiché dans le terminal (`whoami`). */
   handle: 'alexis.chesneau',
   initials: 'AC',
-  title: 'Technicien Informatique – Support N1/N2, Systèmes et Réseaux',
+  title: 'Technicien Informatique de Proximité – Support N1/N2',
   tagline: "Recherche d'alternance Technicien Supérieur Systèmes et Réseaux (TSSR – Bac+2)",
   /** Rôles qui défilent en boucle sous le nom. */
-  roles: ['Technicien Informatique', 'Support N1/N2', 'Systèmes & Réseaux', 'Futur TSSR'],
+  roles: ['Technicien Informatique de Proximité', 'Support N1/N2', 'Futur TSSR'],
   /** Badge de disponibilité affiché en haut du hero. */
   availability: 'Disponible pour une alternance TSSR',
   /** Fichier à placer dans le dossier /public. */
@@ -123,7 +123,7 @@ export const contact = {
   email: 'chesneaualexis64@gmail.com',
   location: 'Nay (64) – Pau, Béarn',
   /** URL complète du profil LinkedIn. Laissez vide pour masquer le lien. */
-  linkedin: '',
+  linkedin: 'https://www.linkedin.com/in/alexis-chesneau-0951b4243',
 }
 
 // ---------------------------------------------------------------------------
@@ -149,7 +149,23 @@ export const stats: Stat[] = [
 //  À propos
 // ---------------------------------------------------------------------------
 export const about = {
-  text: "Technicien informatique de proximité avec 13 mois d'expérience en alternance en support utilisateurs N1/N2 : gestion des incidents sous GLPI, administration Active Directory, déploiement et maintenance de postes Windows 10/11 et d'imprimantes réseau. Double compétence en développement web (JavaScript, React, MySQL) et ancien artisan pâtissier : rigueur, respect des process et sens du service client. Je recherche une alternance Technicien Supérieur Systèmes et Réseaux (TSSR) pour contribuer à l'administration et à la sécurisation de votre infrastructure.",
+  /** Texte découpé en blocs courts. Les passages entre **…** sont mis en valeur. */
+  intro: "Technicien Informatique de Proximité, **titulaire du Titre Professionnel TIP**, avec **13 mois d'expérience en alternance** en support utilisateurs N1/N2.",
+  highlights: [
+    {
+      title: 'Au quotidien',
+      text: "Gestion des incidents sous **GLPI**, administration **Active Directory**, déploiement et maintenance de postes **Windows 10/11** et d'imprimantes réseau.",
+    },
+    {
+      title: 'Double compétence',
+      text: 'Développement web : **JavaScript**, **React**, **MySQL**.',
+    },
+    {
+      title: 'Ancien artisan pâtissier',
+      text: 'Rigueur, respect des process et sens du service client.',
+    },
+  ],
+  goal: "Je recherche une **alternance TSSR** pour contribuer à l'administration et à la sécurisation de votre infrastructure.",
   /** Infos clés affichées à côté du texte. */
   facts: [
     { label: 'Localisation', value: 'Nay (64) – Pau, Béarn' },
@@ -212,10 +228,10 @@ export const experiences: Experience[] = [
     type: 'Alternance',
     domain: 'it',
     missions: [
-      'Assuré le support utilisateurs N1/N2 : diagnostic et résolution des incidents postes de travail et périphériques',
-      'Géré le cycle de vie des tickets dans GLPI, de la prise en charge à la clôture',
-      'Administré Active Directory : création de comptes, affectation aux groupes, organisation des OU',
-      'Installé, configuré et maintenu les postes Windows 10 / 11 et les imprimantes réseau',
+      'Support utilisateurs N1/N2 assuré via GLPI : diagnostic et résolution des incidents sur les postes de travail et périphériques',
+      'Gestion du cycle de vie des tickets dans GLPI, de la prise en charge à la clôture',
+      'Administration d’Active Directory : création de comptes, affectation aux groupes, organisation des OU',
+      'Installation, configuration et maintenance des postes Windows 10/11',
     ],
   },
   {
@@ -225,10 +241,10 @@ export const experiences: Experience[] = [
     type: 'Stage',
     domain: 'it',
     missions: [
-      'Dépanné, monté et maintenu des PC ; remplacé des composants matériels défectueux',
-      'Migré des postes et sécurisé des postes infectés par des logiciels malveillants',
-      'Réalisé des scripts et installé des caméras',
-      'Conseillé et accompagné les clients en expliquant chaque intervention',
+      'Montage, maintenance et dépannage de PC, remplacement de composants défectueux',
+      'Migration de postes de travail et désinfection de machines infectées par des logiciels malveillants',
+      'Rédaction de scripts d’automatisation et installation de caméras de surveillance',
+      'Conseil et accompagnement des clients, avec explication de chaque intervention',
     ],
   },
   {
@@ -238,17 +254,17 @@ export const experiences: Experience[] = [
     type: 'Stage',
     domain: 'it',
     missions: [
-      'Développé 5 outils en JavaScript',
-      "Monté et installé des composants ; assuré la maintenance d'imprimantes via le logiciel Konica Minolta",
+      'Développement de 5 outils internes en JavaScript',
+      "Montage et installation de composants PC, maintenance des imprimantes Konica Minolta via leur logiciel de gestion",
     ],
   },
   {
     role: 'Apprenti pâtissier-boulanger, puis pâtissier',
     company: 'Cazalet / Constanti · Artigared',
-    period: '2011 – 2014 · 2015 – 2016',
+    period: '2011 – 2013 · 2014 – 2016',
     domain: 'autre',
     missions: [
-      "Respecté des process, normes d'hygiène et délais stricts ; travaillé en équipe lors des pics d'activité",
+      "Respect des procédures, des normes d'hygiène et des délais stricts, travail en équipe lors des pics d'activité",
     ],
   },
 ]

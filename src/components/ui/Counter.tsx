@@ -1,5 +1,6 @@
-import { animate, useInView, useReducedMotion } from 'framer-motion'
+import { animate, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+import { REDUCED_MOTION_QUERY, useMediaQuery } from '../../hooks/useMediaQuery'
 
 interface CounterProps {
   value: number
@@ -15,15 +16,15 @@ interface CounterProps {
 export function Counter({ value, duration = 1.8, className }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null)
   const inView = useInView(ref, { once: true, amount: 0.6 })
-  const reduceMotion = useReducedMotion()
+  const reduceMotion = useMediaQuery(REDUCED_MOTION_QUERY)
   const [display, setDisplay] = useState(reduceMotion ? value : 0)
 
   useEffect(() => {
-    if (!inView) return
     if (reduceMotion) {
       setDisplay(value)
       return
     }
+    if (!inView) return
     const controls = animate(0, value, {
       duration,
       ease: [0.16, 1, 0.3, 1],

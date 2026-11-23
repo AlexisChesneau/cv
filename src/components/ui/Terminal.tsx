@@ -1,7 +1,8 @@
-import { useInView, useReducedMotion } from 'framer-motion'
+import { useInView } from 'framer-motion'
 import { RotateCcw } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import type { TerminalLine } from '../../data/cv'
+import { REDUCED_MOTION_QUERY, useMediaQuery } from '../../hooks/useMediaQuery'
 
 interface TerminalProps {
   lines: TerminalLine[]
@@ -34,7 +35,7 @@ function Prompt({ user }: { user: string }) {
 export function Terminal({ lines, user, startDelay = 1200 }: TerminalProps) {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, amount: 0.4 })
-  const reduceMotion = useReducedMotion()
+  const reduceMotion = useMediaQuery(REDUCED_MOTION_QUERY)
 
   const [lineIndex, setLineIndex] = useState(0)
   const [charIndex, setCharIndex] = useState(0)
